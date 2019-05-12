@@ -1,0 +1,41 @@
+项目1
+创建email表
+create table emailtbl (
+id int not null,
+email varchar(255),
+primary key(id));
+
+插入3行数据
+insert into emailtbl(id, email)
+values
+(1,'a@b.com'),
+(2,'c@d.com'),
+(3,'a@b.com');
+
+查询重复数据
+select email,count(*) as count from emailtbl group by email having count>1;
+
+=================================================================
+
+项目2
+创建world表
+create table worldtbl(
+name varchar(255),
+continent varchar(255),
+area int not null,
+population int not null,
+gdp int not null,
+primary key(name));
+
+插入数据
+insert into worldtbl(name,continent,area,population,gdp)
+values
+('Afghanistan','Asia',652230,25500100,20343000),
+('Albania','Europe',28748,2831741,12960000),
+('Algeria','Africa',2381741,37100000,188681000),
+('Andorra','Europe',468,78115,3712000),
+('Angola','Africa',1246700,20609294,100990000);
+
+查询大国家 
+mysql> select name,population,area from worldtbl where area >3000000 or (populat
+ion > 25000000 and gdp>20000000);
