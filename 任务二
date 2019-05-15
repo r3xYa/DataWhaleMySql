@@ -1,0 +1,84 @@
+项目三
+创建email表
+create table course(
+student varchar(255),
+class varchar(255));
+
+插入3行数据
+insert into course(student, class)
+values
+('A','Math'),
+('B','English'),
+('C','Math'),
+('D','Biology'),
+('E','Math'),
+('F','Computer'),
+('G','Math'),
+('H','Math'),
+('I','Math'),
+('A','Math');
+
+
+查询重复数据
+select class from course group by class having count(*)>5;
+
+项目四
+创建salary表
+create table salary(
+id int not null,
+name varchar(255),
+sex varchar(255),
+salary int not null);
+
+插入3行数据
+insert into salary(id,name,sex,salary)
+values
+(1,'A','m',2500),
+(2,'B','f',1500),
+(3,'C','m',5500),
+(4,'D','f',500);
+
+更新数据
+update salary set sex = case sex
+when 'f' then 'm'
+when 'm' then 'f'
+end;
+
+
+项目五
+表1:
+create table Person(
+PersonId int not null primary key,
+FirstName varchar(255),
+LastName varchar(255));
+
+
+insert into Person(PersonId,FirstName,LastName)
+values
+(1,'tony','starks'),
+(2,'steve','rogers'),
+(3,'natasha','romanoff');
+
+
+表2:
+create table Address(
+AddressId int not null Primary key,
+PersonId int not null,
+City varchar(255),
+State varchar(255));
+
+
+insert into Address(AddressId,PersonId,City,State)
+values
+(4,5,'NewYork','Jersey'),
+(5,2,'washiton','dc'),
+(6,4,'miami','florida');
+
+select FirstName, LastName, City, State from Address left join Person on Person.PersonId = Address.PersonId order by Person.PersonId;
+
+项目六
+创建临时表
+create table emailtmp as select * from email;
+删除两表之中email重复而且id更大的那个
+delete emailtmp from emailtmp,email where emailtmp.email = email.email an
+d emailtmp.id>email.id;
